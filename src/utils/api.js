@@ -9,3 +9,13 @@ export async function fetchProducts() {
 
   return response.json();
 }
+
+export async function fetchProductById(id) {
+  const response = await fetch(`${BASE_URL}/products/${id}`);
+
+  if (!response.ok) {
+    throw new Error(`Servern svarade med status ${response.status}`);
+  }
+
+  return response.json();
+}

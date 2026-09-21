@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { fetchProductById } from "../utils/api";
+import { useCart } from "../context/CartContext";
 import StatusMessage from "../components/StatusMessage";
 
 function ProductDetailPage() {
   const { id } = useParams();
+  const { addToCart } = useCart();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -38,6 +40,7 @@ function ProductDetailPage() {
       <img src={product.image} alt={product.title} width="250" />
       <p>{product.description}</p>
       <p>{product.price} $</p>
+      <button onClick={() => addToCart(product)}>Lägg i varukorg</button>
     </article>
   );
 }

@@ -1,16 +1,52 @@
-# React + Vite
+Butiken
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+En enkel e-handel applikation byggd i React. Användaren kan bläddra bland produkter, se produktdetaljer, lägga varor i en varukorg och genomföra ett köp via ett formulär. 
 
-Currently, two official plugins are available:
+Produktdata hämtas från [Fake Store API](https://fakestoreapi.com).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+#1 Kom igång lokalt
 
-## React Compiler
+1. Klona repot:
+    bash
+    git clone https://github.com/nahomnm/butiken.git
+    cd butiken
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2. Installera paket:
+    bash
+    npm install
 
-## Expanding the ESLint configuration
+3. Starta servern:
+    bash
+    npm run dev
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+4. Öppna adressen som visas i terminalen
+    http://localhost:5173.
+
+#2 Funktioner
+
+- Bläddra bland produkter hämtade från Fake Store API
+- Se detaljerad information om en produkt
+- Lägga till, ta bort och ändra antal av varor i varukorgen
+- Varukorgen sparas i `localStorage` och finns kvar efter en omladdning
+- Fylla i ett formulär för att slutföra köpet, med validering av namn, e-post och adress
+
+#3 Uppfyllda krav
+
+- Komponentstruktur: Sex komponenter med tydligt ansvar (`Header`, `ProductCard`, `ProductList`, `StatusMessage`, `CartItem`, `CheckoutForm`), separerade från sidor (`pages/`) och hjälpfunktioner (`utils/`).
+
+- Routing: Fyra vyer (produktlista, produktdetalj, varukorg, kassa) via React Router, utan att sidan laddas om.
+
+- State management: Delat state via `CartContext` (varukorgen), lokalt state för formulärfält och laddnings-/felstatus i respektive sida.
+
+- Externt API-anrop: Hämtning från Fake Store API, med hantering av loading- och felfall.
+
+- Formulär och validering: Kassaformulär med validering av obligatoriska fält och tydlig felåterkoppling.
+
+- **Persistens:** Varukorgen sparas i 'LocalStorage' mellan sidladdningar.
+
+#4 Teknik
+
+- React
+- React Router
+- Vite
+- Fake Store API

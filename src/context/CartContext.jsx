@@ -47,11 +47,22 @@ export function CartProvider({ children }) {
     );
   }
 
+  function clearCart() {
+    setCart([]);
+  }
+
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, updateQuantity, totalItems }}
+      value={{
+        cart,
+        addToCart,
+        removeFromCart,
+        updateQuantity,
+        clearCart,
+        totalItems,
+      }}
     >
       {children}
     </CartContext.Provider>
